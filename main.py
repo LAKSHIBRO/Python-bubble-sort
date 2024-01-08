@@ -1,23 +1,22 @@
-nums = []
+def bubble_sort(numbers):
+    for i in range(len(numbers)):
+        for j in range(len(numbers) - 1):
+            if numbers[j] > numbers[j + 1]:
+                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+    return numbers
 
-while True:
-    name = input("Enter a number : ")
-    nums.append(name)
+def get_user_input():
+    number_list = []
+    n = int(input("Enter the list size: "))
+    for i in range(n):
+        item = int(input(f"Enter number at index {i}: "))
+        number_list.append(item)
+    return number_list
 
-    choice = input("Enter another number? (y / n)")
-    if choice.casefold() == 'n':
-        break
+def main():
+    numbers = get_user_input()
+    sorted_numbers = bubble_sort(numbers)
+    print("Sorted list is ", sorted_numbers)
 
-
-def sort(nums):
-    for i in range(len(nums) - 1, 0, -1):
-        for j in range(i):
-            if nums[j] > nums[j + 1]:
-                temp = nums[j]
-                nums[j] = nums[j + 1]
-                nums[j + 1] = temp
-
-
-sort(nums)
-
-print(nums)
+if __name__ == "__main__":
+    main()
